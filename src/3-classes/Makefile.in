@@ -76,7 +76,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = class-const$(EXEEXT)
+bin_PROGRAMS = class-const$(EXEEXT) class-dest$(EXEEXT) \
+	class-init$(EXEEXT) class-opovr$(EXEEXT) class-friend$(EXEEXT)
 subdir = src/3-classes
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -93,6 +94,18 @@ PROGRAMS = $(bin_PROGRAMS)
 class_const_SOURCES = class-const.cpp
 class_const_OBJECTS = class-const.$(OBJEXT)
 class_const_LDADD = $(LDADD)
+class_dest_SOURCES = class-dest.cpp
+class_dest_OBJECTS = class-dest.$(OBJEXT)
+class_dest_LDADD = $(LDADD)
+class_friend_SOURCES = class-friend.cpp
+class_friend_OBJECTS = class-friend.$(OBJEXT)
+class_friend_LDADD = $(LDADD)
+class_init_SOURCES = class-init.cpp
+class_init_OBJECTS = class-init.$(OBJEXT)
+class_init_LDADD = $(LDADD)
+class_opovr_SOURCES = class-opovr.cpp
+class_opovr_OBJECTS = class-opovr.$(OBJEXT)
+class_opovr_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -122,7 +135,8 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = class-const.cpp
+SOURCES = class-const.cpp class-dest.cpp class-friend.cpp \
+	class-init.cpp class-opovr.cpp
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -317,6 +331,22 @@ class-const$(EXEEXT): $(class_const_OBJECTS) $(class_const_DEPENDENCIES) $(EXTRA
 	@rm -f class-const$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(class_const_OBJECTS) $(class_const_LDADD) $(LIBS)
 
+class-dest$(EXEEXT): $(class_dest_OBJECTS) $(class_dest_DEPENDENCIES) $(EXTRA_class_dest_DEPENDENCIES) 
+	@rm -f class-dest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(class_dest_OBJECTS) $(class_dest_LDADD) $(LIBS)
+
+class-friend$(EXEEXT): $(class_friend_OBJECTS) $(class_friend_DEPENDENCIES) $(EXTRA_class_friend_DEPENDENCIES) 
+	@rm -f class-friend$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(class_friend_OBJECTS) $(class_friend_LDADD) $(LIBS)
+
+class-init$(EXEEXT): $(class_init_OBJECTS) $(class_init_DEPENDENCIES) $(EXTRA_class_init_DEPENDENCIES) 
+	@rm -f class-init$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(class_init_OBJECTS) $(class_init_LDADD) $(LIBS)
+
+class-opovr$(EXEEXT): $(class_opovr_OBJECTS) $(class_opovr_DEPENDENCIES) $(EXTRA_class_opovr_DEPENDENCIES) 
+	@rm -f class-opovr$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(class_opovr_OBJECTS) $(class_opovr_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -324,6 +354,10 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/class-const.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/class-dest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/class-friend.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/class-init.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/class-opovr.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
