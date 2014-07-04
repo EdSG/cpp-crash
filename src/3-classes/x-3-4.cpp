@@ -8,19 +8,19 @@ class Foo
 
   public:
 
-  Foo(int value=0):_value(value)
-  {
-  }
+    Foo(int value=0):_value(value)
+    {
+    }
 
-  friend std::istream& operator>>(std::istream& in, Foo& f)
-  {
-    return in >> f._value;
-  }
+    friend std::istream& operator>>(std::istream& in, Foo& f)
+    {
+      return in >> f._value;
+    }
 
-  friend std::ostream& operator<<(std::ostream& out, const Foo& f)
-  {
-    return out << "Foo(" << &f << ":" << f._value << ")";
-  }
+    friend std::ostream& operator<<(std::ostream& out, const Foo& f)
+    {
+      return out << "Foo(" << &f << ":" << f._value << ")";
+    }
 
 };
 
