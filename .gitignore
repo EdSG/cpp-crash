@@ -1,3 +1,5 @@
+config.log
 .deps
 *.o
-
+Makefile
+Makefile.in
