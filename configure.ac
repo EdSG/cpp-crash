@@ -1,4 +1,4 @@
-AC_INIT([cpp-crash], [0.1], [edgarsanchezg@gmail.com])
+AC_INIT([cpp-crash], [0.1], [EdSG@users.noreply.github.com])
 AM_INIT_AUTOMAKE([foreign no-dist no-installman no-installinfo subdir-objects -Wall -Werror])
 AC_PROG_CC
 AC_PROG_CXX
