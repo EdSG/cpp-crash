@@ -1,2 +1,2 @@
-SUBDIRS = 2-from-c-to-cpp 3-classes
+SUBDIRS = 2-from-c-to-cpp 3-classes 4-inheritance
 

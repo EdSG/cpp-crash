@@ -9,5 +9,6 @@ AC_CONFIG_FILES([
     src/Makefile
     src/2-from-c-to-cpp/Makefile
     src/3-classes/Makefile
+    src/4-inheritance/Makefile
 ])
 AC_OUTPUT

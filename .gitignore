@@ -1,5 +1,9 @@
+configure
+config.status
 config.log
+autom4te.cache
+Makefile.in
+Makefile
 .deps
 *.o
-Makefile
-Makefile.in
+
