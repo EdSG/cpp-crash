@@ -6,6 +6,11 @@ class Foo
 
     int _value;
 
+    void ClearValue(const int value)
+    {
+      this->_value = value;
+    }
+
   public:
 
     Foo(int value=0):_value(value)
@@ -14,7 +19,7 @@ class Foo
 
     virtual ~Foo()
     {
-      std::cout << std::endl << "~Foo()" << std::endl;
+      std::cout << "~" << *this << std::endl;
     }
 
     friend std::ostream& operator<<(std::ostream& out, const Foo& f)
@@ -22,11 +27,16 @@ class Foo
       return out << "Foo(" << &f << ":" << f._value << ")";
     }
 
+    void ResetValue()
+    {
+      SetValue(0);
+    }
+
   protected:
 
     void SetValue(const int value)
     {
-      this->_value = value;
+      ClearValue(value);
     }
 
 };
@@ -45,7 +55,14 @@ class Bar_public: public Foo
 
     virtual ~Bar_public()
     {
-      std::cout << std::endl << "~Bar_public()" << std::endl;
+      std::cout << "~Bar_public(" << this << ":" << _balue << ")" << std::endl;
+    }
+
+    void Method_Public(const int balue)
+    {
+      ResetValue();
+      SetValue(balue);
+      // ClearValue(2); // void Foo::ClearValue(int) is private
     }
 
 };
@@ -64,7 +81,14 @@ class Bar_private: private Foo
 
     virtual ~Bar_private()
     {
-      std::cout << std::endl << "~Bar_private()" << std::endl;
+      std::cout << "~Bar_private(" << this << ":" << _balue << ")" << std::endl;
+    }
+
+    void Method_Private(const int balue)
+    {
+      ResetValue();
+      SetValue(balue);
+      // ClearValue(2); // void Foo::ClearValue(int) is private
     }
 
 };
@@ -83,7 +107,14 @@ class Bar_protected: protected Foo
 
     virtual ~Bar_protected()
     {
-      std::cout << std::endl << "~Bar_protected()" << std::endl;
+      std::cout << "~Bar_protected(" << this << ":" << _balue << ")" << std::endl;
+    }
+
+    void Method_Protected(const int balue)
+    {
+      ResetValue();
+      SetValue(balue);
+      // ClearValue(2); // void Foo::ClearValue(int) is private
     }
 
 };
@@ -91,9 +122,21 @@ class Bar_protected: protected Foo
 int main(int argc, char *argv[], char *envp[])
 {
   Foo f;
-  Bar_public bpub;
-  Bar_private bpriv;
-  Bar_private bprot;
+  Bar_public bpub(1);
+  Bar_private bpriv(2);
+  Bar_protected bprot(3);
+
+  bpub.ResetValue();
+  // bpub.SetValue(1); // void Foo::SetValue(int) is protected
+  bpub.Method_Public(10);
+
+  // bpriv.ResetValue(); // void Foo::ResetValue() is inaccessible
+  // bpriv.SetValue(2); // void Foo::SetValue(int) is inaccessible
+  bpriv.Method_Private(20);
+
+  // bprot.ResetValue(); // void Foo::ResetValue() is inaccessible
+  // bprot.SetValue(3); // void Foo::SetValue(int) is protected
+  bprot.Method_Protected(30);
 
   return 0;
 }
