@@ -13,5 +13,6 @@ AC_CONFIG_FILES([
     src/2-from-c-to-cpp/Makefile
     src/3-classes/Makefile
     src/4-inheritance/Makefile
+    src/5-exceptions/Makefile
 ])
 AC_OUTPUT
