@@ -12,6 +12,7 @@ int main(int argc, char *argv[], char *envp[])
     std::cout << "Before 'new'" << std::endl;
     float* array = new float[length * sizeof(float)];
     std::cout << "After 'new'" << std::endl;
+    std::cout << "array = " << &array << std::endl;
   }
   catch(std::bad_alloc bae)
   {
