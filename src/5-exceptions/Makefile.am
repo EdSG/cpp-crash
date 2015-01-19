@@ -1,4 +1,3 @@
-bin_PROGRAMS = exc-basic \
-								x-5-1
+bin_PROGRAMS = exc-basic
 AM_DEFAULT_SOURCE_EXT = .cpp
 
